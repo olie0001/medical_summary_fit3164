@@ -14,207 +14,219 @@
     <!--CSS-->
     <link rel="stylesheet" href="style.css" />
   </head> 
-  
+
   <body> 
     <!--NAV BAR-->
-    <nav class = "navbar navbar-expand navbar-dark bg-success">
-        <div class = "container-fluid">
-            <a class = "navbar-brand">
-                <h2>Medical History</h2>
-            </a>
-        </div>
-        <form class ="d-flex" id="search_patient" role="search">
-          <input type ="search" id="patient_id" name ="q" placeholder="Search Patient..">
-          <button>Search</button>
-        </form>
-    </nav>
-    <br>
-    <div class="container-fluid">
-      <div class="row">
-        <div class="col-4"><h2>Patient Number:</h2></div>
-        <div class="col-8"><h2>123459045094</h2></div>
-      </div>
-    </div>
-    <br>
-    <div class="container-fluid">
-      <div class="row">
-        <div class="col-12">
-          <div class="card">
-            <div class="card-body">
-              <h5 class="card-title">Patient Details</h5>
-              <p class="card-text"> Name : [Patient's Name] </p>
-              <p>Date of Birth: [Date of Birth]</p>
-              <p> Sex : [Sex] </p>
+    <header>
+        <nav class="navbar navbar-expand navbar-dark bg-success">
+            <!--Heading-->
+            <div class="container-fluid">
+                <a class="navbar-brand">
+                    <h2>Medical History</h2>
+                </a>
             </div>
-          </div>
+            <!--Search Bar-->
+            <form class="d-flex" id="search_patient" role="search">
+                <input class="form-control me-2" type ="search" id="patient_id" name ="q" placeholder="Search Patient...">
+                <div style="padding-right: 30px;">
+                    <button class="btn btn-primary">Search</button>
+                </div>
+            </form>
+        </nav>
+    </header>
+
+    <br><br>
+
+    <main>
+        <!--Patient Number-->
+        <div class="container">
+            <div class="row">
+                <div class="col-3"><h2>Patient Number:</h2></div>
+                <div class="col-9"><h2>123459045094</h2></div>
+            </div>
         </div>
-      </div>
-    </div>
-    <!--Patient History-->
-    <div class="container">
-      <div class="my-4">
-          <h1 class="text-success">Patient History</h1>
-      </div>
-      <div class="row">
-          <strong>
-          Discharge Date
-         </strong>
-          <div class="col-4">
-              <div id="list-1" class="list-group ">
-                  <a class="list-group-item 
-                      list-group-item-action" href="#list-item-1">
-                      Date 1: Abdominal Pain
-                  </a>
-                  <a class="list-group-item 
-                      list-group-item-action" href="#list-item-2">
-                      Date 2: Altered mental status
-                  </a>
-                  <a class="list-group-item 
-                      list-group-item-action" href="#list-item-3">
-                      Date 3: Abdominal fullness and discomfort
-                  </a>
-                  <a class="list-group-item list-group-item-action"
-                      href="#list-item-4">
-                      Date 4: Worsening ABD distension and pain
-                  </a>
-              </div>
-          </div>
-          <div class="col-8 text-bg-success">
-              <div data-bs-spy="scroll"
-                  data-bs-target="#list-1"
-                  data-bs-smooth-scroll="true"
-                  class="scrollspy-example" tabindex="0">
-                  <h4 id="list-item-1">Date 1: Abdominal Pain</h4>
-                  <p>...<br>...<br>...<br>...<br>
-                  </p>
-                  <h4 id="list-item-2">Date 2: Altered mental status</h4>
-                  <p>...<br>...<br>...<br>...<br>
-                  </p>
-                  <h4 id="list-item-3">Date 3: Abdominal fullness and discomfort</h4>
-                  <p>...<br>...<br>...<br>...<br>
-                  </p>
-                  <h4 id="list-item-4">Date 4: Worsening ABD distension and pain</h4>
-                  <p>...<br>...<br>...<br>...<br>
-                  </p>
-              </div>
-          </div>
-      </div>
-  </div>
 
-  <div class="container">
-    <div class="my-4">
-        <h1 class="text-success">Radiology History</h1>
-    </div>
-    <ul class="nav nav-tabs">
-      <li><a class="nav-link active" data-bs-toggle="tab" href="#Indication">Indication</a></li>
-      <li><a class="nav-link" data-bs-toggle="tab" href="#Examination" >Examination</a></li>
-    </ul>
-    <div class="tab-content">
-      <div id="Indication" class="tab-pane fade in active">
         <br>
-        <div class="row">
-          <strong>
-          Radiology Date
-         </strong>
-          <div class="col-4">
-              <div id="list-2" class="list-group ">
-                  <a class="list-group-item 
-                      list-group-item-action" href="#list-item-1">
-                      Date 1: Chest
-                  </a>
-                  <a class="list-group-item 
-                      list-group-item-action" href="#list-item-2">
-                      Date 2: Liver
-                  </a>
-                  <a class="list-group-item 
-                      list-group-item-action" href="#list-item-3">
-                      Date 3: Gallblader
-                  </a>
-                  <a class="list-group-item list-group-item-action"
-                      href="#list-item-4">
-                      Date 4: Parancentesis
-                  </a>
-              </div>
-          </div>
-          <div class="col-8 text-bg-success">
-              <div data-bs-spy="scroll"
-                  data-bs-target="#list-2"
-                  data-bs-smooth-scroll="true"
-                  class="scrollspy-example" tabindex="0">
-                  <h4 id="list-item-1">Date 1: Chest</h4>
-                  <p>...<br>...<br>...<br>...<br>
-                  </p>
-                  <h4 id="list-item-2">Date 2: Liver</h4>
-                  <p>...<br>...<br>...<br>...<br>
-                  </p>
-                  <h4 id="list-item-3">Date 3: Gallblader</h4>
-                  <p>...<br>...<br>...<br>...<br>
-                  </p>
-                  <h4 id="list-item-4">Date 4: Parancentesis</h4>
-                  <p>...<br>...<br>...<br>...<br>
-                  </p>
-              </div>
-          </div>
-      </div>
-      </div>
-    </div>
-      <div id="Examination" class="tab-pane fade">
-        <br>
-        <div class="row">
-          <strong>
-          Radiology Date
-         </strong>
-          <div class="col-4">
-              <div id="list-3" class="list-group ">
-                  <a class="list-group-item 
-                      list-group-item-action" href="#list-item-1">
-                      Date 1: E1
-                  </a>
-                  <a class="list-group-item 
-                      list-group-item-action" href="#list-item-2">
-                      Date 2: E2
-                  </a>
-                  <a class="list-group-item 
-                      list-group-item-action" href="#list-item-3">
-                      Date 3: E3
-                  </a>
-                  <a class="list-group-item list-group-item-action"
-                      href="#list-item-4">
-                      Date 4: E4
-                  </a>
-              </div>
-          </div>
-          <div class="col-8 text-bg-success">
-              <div data-bs-spy="scroll"
-                  data-bs-target="#list-3"
-                  data-bs-smooth-scroll="true"
-                  class="scrollspy-example" tabindex="0">
-                  <h4 id="list-item-1">Date 1: E1</h4>
-                  <p>...<br>...<br>...<br>...<br>
-                  </p>
-                  <h4 id="list-item-2">Date 2: E2</h4>
-                  <p>...<br>...<br>...<br>...<br>
-                  </p>
-                  <h4 id="list-item-3">Date 3: E3</h4>
-                  <p>...<br>...<br>...<br>...<br>
-                  </p>
-                  <h4 id="list-item-4">Date 4: E4</h4>
-                  <p>...<br>...<br>...<br>...<br>
-                  </p>
-              </div>
-          </div>
-  
-    </div>
-    </div>
-</div>
 
-  </div>
-    
-  <script src=
-  "https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js">
-      </script>
-      <script src=
-  "https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.min.js">
-      </script>
+        <!--Patient Details-->
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Patient Details</h5>
+                            <br>
+                            <div class="row">
+                                <div class="col-2"><p class="card-text">Name:</p></div>
+                                <div class="col-10"><p class="card-text">[Patient's Name]</p></div>
+                            </div>
+                            <div class="row">
+                                <div class="col-2"><p class="card-text">Date of Birth:</p></div>
+                                <div class="col-10"><p class="card-text">[Date of Birth]</p></div>
+                            </div>
+                            <div class="row">
+                                <div class="col-2"><p class="card-text">Sex:</p></div>
+                                <div class="col-10"><p class="card-text">[Sex]</p></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <br><br>
+
+        <!--Patient History-->
+        <div class="container">
+            <div class="my-4">
+                <h1 class="text-success">Patient History</h1>
+            </div>
+            <div class="row">
+                <strong>Discharge Date</strong>
+                <!--Timeline-->
+                <div class="col-4">
+                    <div id="list-1" class="list-group ">
+                        <a class="list-group-item list-group-item-action" href="#list-item-1">
+                            Date 1: Abdominal Pain
+                        </a>
+                        <a class="list-group-item list-group-item-action" href="#list-item-2">
+                            Date 2: Altered mental status
+                        </a>
+                        <a class="list-group-item list-group-item-action" href="#list-item-3">
+                            Date 3: Abdominal fullness and discomfort
+                        </a>
+                        <a class="list-group-item list-group-item-action" href="#list-item-4">
+                            Date 4: Worsening ABD distension and pain
+                        </a>
+                    </div>
+                </div>
+                <!--Medical Note-->
+                <div class="col-8 text-bg-success">
+                    <div data-bs-spy="scroll" data-bs-target="#list-1" data-bs-smooth-scroll="true" class="scrollspy-example" tabindex="0">
+                        <h4 id="list-item-1">Date 1: Abdominal Pain</h4>
+                        <p>
+                            ...<br>...<br>...<br>...<br>
+                        </p>
+                        <h4 id="list-item-2">Date 2: Altered mental status</h4>
+                        <p>
+                            ...<br>...<br>...<br>...<br>
+                        </p>
+                        <h4 id="list-item-3">Date 3: Abdominal fullness and discomfort</h4>
+                        <p>
+                            ...<br>...<br>...<br>...<br>
+                        </p>
+                        <h4 id="list-item-4">Date 4: Worsening ABD distension and pain</h4>
+                        <p>
+                            ...<br>...<br>...<br>...<br>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <br><br>
+
+        <!--Radiology History-->
+        <div class="container">
+            <div class="my-4">
+                <h1 class="text-success">Radiology History</h1>
+            </div>
+            <ul class="nav nav-tabs">
+                <li><a class="nav-link active" data-bs-toggle="tab" href="#Indication">Indication</a></li>
+                <li><a class="nav-link" data-bs-toggle="tab" href="#Examination">Examination</a></li>
+            </ul>
+            <div class="tab-content">
+                <!--Indication-->
+                <div id="Indication" class="tab-pane fade show active">
+                    <br>
+                    <div class="row">
+                        <strong>Radiology Date</strong>
+                        <div class="col-4">
+                            <div id="list-2" class="list-group">
+                                <a class="list-group-item list-group-item-action" href="#list-item-1">
+                                    Date 1: Chest
+                                </a>
+                                <a class="list-group-item list-group-item-action" href="#list-item-2">
+                                    Date 2: Liver
+                                </a>
+                                <a class="list-group-item list-group-item-action" href="#list-item-3">
+                                    Date 3: Gallblader
+                                </a>
+                                <a class="list-group-item list-group-item-action" href="#list-item-4">
+                                    Date 4: Parancentesis
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-8 text-bg-success">
+                            <div data-bs-spy="scroll" data-bs-target="#list-2" data-bs-smooth-scroll="true" class="scrollspy-example" tabindex="0">
+                                <h4 id="list-item-1">Date 1: Chest</h4>
+                                <p>
+                                    ...<br>...<br>...<br>...<br>
+                                </p>
+                                <h4 id="list-item-2">Date 2: Liver</h4>
+                                <p>
+                                    ...<br>...<br>...<br>...<br>
+                                </p>
+                                <h4 id="list-item-3">Date 3: Gallblader</h4>
+                                <p>
+                                    ...<br>...<br>...<br>...<br>
+                                </p>
+                                <h4 id="list-item-4">Date 4: Parancentesis</h4>
+                                <p>
+                                    ...<br>...<br>...<br>...<br>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="Examination" class="tab-pane fade">
+                <br>
+                <div class="row">
+                    <strong>Radiology Date</strong>
+                    <div class="col-4">
+                        <div id="list-3" class="list-group ">
+                            <a class="list-group-item list-group-item-action" href="#list-item-1">
+                                Date 1: E1
+                            </a>
+                            <a class="list-group-item list-group-item-action" href="#list-item-2">
+                                Date 2: E2
+                            </a>
+                            <a class="list-group-item list-group-item-action" href="#list-item-3">
+                                Date 3: E3
+                            </a>
+                            <a class="list-group-item list-group-item-action" href="#list-item-4">
+                                Date 4: E4
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-8 text-bg-success">
+                        <div data-bs-spy="scroll" data-bs-target="#list-3" data-bs-smooth-scroll="true" class="scrollspy-example" tabindex="0">
+                            <h4 id="list-item-1">Date 1: E1</h4>
+                            <p>
+                                ...<br>...<br>...<br>...<br>
+                            </p>
+                            <h4 id="list-item-2">Date 2: E2</h4>
+                            <p>
+                                ...<br>...<br>...<br>...<br>
+                            </p>
+                            <h4 id="list-item-3">Date 3: E3</h4>
+                            <p>
+                                ...<br>...<br>...<br>...<br>
+                            </p>
+                            <h4 id="list-item-4">Date 4: E4</h4>
+                            <p>
+                                ...<br>...<br>...<br>...<br>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!--JavaScript-->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.min.js"></script>
   </body> 
 </html>
