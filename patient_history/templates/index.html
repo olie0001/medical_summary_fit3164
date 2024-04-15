@@ -95,42 +95,29 @@
                 <strong>Discharge Date</strong>
                 <!--Timeline-->
                 <div class="col-4">
-                    <div id="list-1" class="list-group ">
-                        <a class="list-group-item list-group-item-action" href="#list-item-1">
-                            Date 1: Abdominal Pain
-                        </a>
-                        <a class="list-group-item list-group-item-action" href="#list-item-2">
-                            Date 2: Altered mental status
-                        </a>
-                        <a class="list-group-item list-group-item-action" href="#list-item-3">
-                            Date 3: Abdominal fullness and discomfort
-                        </a>
-                        <a class="list-group-item list-group-item-action" href="#list-item-4">
-                            Date 4: Worsening ABD distension and pain
-                        </a>
+                    <div id="list-1" class="list-group">
+                        {% for discharge in discharge_arr %}
+                            <a class="list-group-item list-group-item-action" href="#list-item-{{ loop.index }}">
+                                Date {{ loop.index }}: {{ discharge.storetime.strftime('%Y-%m-%d') if discharge.storetime else 'N/A' }}
+                            </a>
+                        {% else %}
+                            <div>No discharge records found.</div>
+                        {% endfor %}
                     </div>
-                </div>
+                </div>                
                 <!--Medical Note-->
                 <div class="col-8 text-bg-success">
                     <div data-bs-spy="scroll" data-bs-target="#list-1" data-bs-smooth-scroll="true" class="scrollspy-example" tabindex="0">
-                        <h4 id="list-item-1">Date 1: Abdominal Pain</h4>
-                        <p>
-                            {{ medical_note }}
-                        </p>
-                        <h4 id="list-item-2">Date 2: Altered mental status</h4>
-                        <p>
-                            ...<br>...<br>...<br>...<br>
-                        </p>
-                        <h4 id="list-item-3">Date 3: Abdominal fullness and discomfort</h4>
-                        <p>
-                            ...<br>...<br>...<br>...<br>
-                        </p>
-                        <h4 id="list-item-4">Date 4: Worsening ABD distension and pain</h4>
-                        <p>
-                            ...<br>...<br>...<br>...<br>
-                        </p>
+                        {% for discharge in discharge_arr %}
+                            <h4 id="list-item-{{ loop.index }}">Date {{ loop.index }}: {{ discharge.storetime.strftime('%Y-%m-%d') if discharge.storetime else 'N/A' }}</h4>
+                            <p>
+                                {{ discharge.text }}
+                            </p>
+                        {% else %}
+                            <p>No discharge data available.</p>
+                        {% endfor %}
                     </div>
-                </div>
+                </div>                
             </div>
         </div>
 
@@ -153,40 +140,27 @@
                         <strong>Radiology Date</strong>
                         <div class="col-4">
                             <div id="list-2" class="list-group">
-                                <a class="list-group-item list-group-item-action" href="#list-item-1">
-                                    Date 1: Chest
-                                </a>
-                                <a class="list-group-item list-group-item-action" href="#list-item-2">
-                                    Date 2: Liver
-                                </a>
-                                <a class="list-group-item list-group-item-action" href="#list-item-3">
-                                    Date 3: Gallblader
-                                </a>
-                                <a class="list-group-item list-group-item-action" href="#list-item-4">
-                                    Date 4: Parancentesis
-                                </a>
+                                {% for radiology in radiology_arr %}
+                                    <a class="list-group-item list-group-item-action" href="#list-item-{{ loop.index }}">
+                                        Date {{ loop.index }}: {{ radiology.storetime.strftime('%Y-%m-%d') if radiology.storetime else 'N/A' }}
+                                    </a>
+                                {% else %}
+                                    <div>No radiology records found.</div>
+                                {% endfor %}
                             </div>
                         </div>
                         <div class="col-8 text-bg-success">
-                            <div data-bs-spy="scroll" data-bs-target="#list-2" data-bs-smooth-scroll="true" class="scrollspy-example" tabindex="0">
-                                <h4 id="list-item-1">Date 1: Chest</h4>
-                                <p>
-                                    ...<br>...<br>...<br>...<br>
-                                </p>
-                                <h4 id="list-item-2">Date 2: Liver</h4>
-                                <p>
-                                    ...<br>...<br>...<br>...<br>
-                                </p>
-                                <h4 id="list-item-3">Date 3: Gallblader</h4>
-                                <p>
-                                    ...<br>...<br>...<br>...<br>
-                                </p>
-                                <h4 id="list-item-4">Date 4: Parancentesis</h4>
-                                <p>
-                                    ...<br>...<br>...<br>...<br>
-                                </p>
+                            <div data-bs-spy="scroll" data-bs-target="#list-3" data-bs-smooth-scroll="true" class="scrollspy-example" tabindex="0" style="max-height: 500px; overflow-y: auto;">
+                                {% for radiology in radiology_arr %}
+                                    <h4 id="list-item-{{ loop.index }}">Date {{ loop.index }}: {{ radiology.storetime.strftime('%Y-%m-%d') if radiology.storetime else 'N/A' }}</h4>
+                                    <p>
+                                        {{ radiology.text }}
+                                    </p>
+                                {% else %}
+                                    <p>No radiology data available.</p>
+                                {% endfor %}
                             </div>
-                        </div>
+                        </div> 
                     </div>
                 </div>
             </div>

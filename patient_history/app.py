@@ -18,7 +18,7 @@ def summarise(note):
 app = Flask(__name__)
 
 # Configure the SQLAlchemy part to connect to the PostgreSQL database
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:ds12@localhost/patient_note'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:ds12@localhost:5433/patient_note'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 # Initialize the database connection
@@ -29,6 +29,22 @@ class DischargeFirst10(db.Model):
     __tablename__ = 'discharge_first_10'  # Your table name
     note_id = db.Column(db.String(), primary_key=True)  # Assuming note_id is the primary key
     text = db.Column(db.Text)  # Assuming 'text' is the name of the column to retrieve
+    
+
+class DischargeData(db.Model):
+    __tablename__ = 'discharge_data'
+    note_id = db.Column(db.String(), primary_key=True)
+    storetime = db.Column(db.Date)
+    subject_id = db.Column(db.String(8), nullable=False)
+    text = db.Column(db.Text)
+
+class RadiologyData(db.Model):
+    __tablename__ = 'radiology_data'
+    note_id = db.Column(db.String(), primary_key=True)
+    storetime = db.Column(db.Date)
+    subject_id = db.Column(db.String(8), nullable=False)
+    text = db.Column(db.Text)
+
 
 @app.route('/')
 def index():
@@ -36,8 +52,36 @@ def index():
     note_entry = DischargeFirst10.query.first()
     medical_note = note_entry.text
     # Call the summarisation function 
-    note = summarise(medical_note)
-    return render_template('index.html', medical_note=note)
+    #note = summarise(medical_note)
+    #return render_template('index.html', medical_note=note)
+
+    #for each patient
+    subject_id = '10000032'
+
+    # Fetch all entries for a specific patient_id
+    discharge_entries = DischargeData.query.filter_by(subject_id=subject_id).all()
+    radiology_entries = RadiologyData.query.filter_by(subject_id=subject_id).all()
+
+    # Collect data for each entry related to the patient
+    discharge_arr = []
+    for entry in discharge_entries:
+        entry_data = {
+            'note_id': entry.note_id,
+            'storetime': entry.storetime,
+            'text': entry.text,  # assuming there is a text column that you want to display
+        }
+        discharge_arr.append(entry_data)
+
+
+    radiology_arr =[]
+    for r_entry in radiology_entries:
+        r_entry = {
+            'note_id': entry.note_id,
+            'storetime': entry.storetime,
+            'text': entry.text,  # assuming there is a text column that you want to display
+        }
+        radiology_arr.append(r_entry)
+    return render_template('index.html', medical_note=medical_note, discharge_arr=discharge_arr, radiology_arr=radiology_arr)
 
 if __name__ == '__main__':
     app.run(debug=True)
