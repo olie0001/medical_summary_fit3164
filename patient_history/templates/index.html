@@ -97,7 +97,7 @@
                 <div class="col-4">
                     <div id="list-1" class="list-group ">
                         <a class="list-group-item list-group-item-action" href="#list-item-1">
-                            Date 1: Abdominal Pain
+                            {{ date }}: Abdominal Pain
                         </a>
                         <a class="list-group-item list-group-item-action" href="#list-item-2">
                             Date 2: Altered mental status
@@ -113,7 +113,7 @@
                 <!--Medical Note-->
                 <div class="col-8 text-bg-success">
                     <div data-bs-spy="scroll" data-bs-target="#list-1" data-bs-smooth-scroll="true" class="scrollspy-example" tabindex="0">
-                        <h4 id="list-item-1">Date 1: Abdominal Pain</h4>
+                        <h4 id="list-item-1">{{ date }}: Abdominal Pain</h4>
                         <p>
                             {{ medical_note }}
                         </p>

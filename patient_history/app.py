@@ -29,6 +29,7 @@ class DischargeFirst10(db.Model):
     __tablename__ = 'discharge_first_10'  # Your table name
     note_id = db.Column(db.String(), primary_key=True)  # Assuming note_id is the primary key
     text = db.Column(db.Text)  # Assuming 'text' is the name of the column to retrieve
+    charttime = db.Column(db.DateTime)
 
 @app.route('/')
 def index():
@@ -37,7 +38,8 @@ def index():
     medical_note = note_entry.text
     # Call the summarisation function 
     note = summarise(medical_note)
-    return render_template('index.html', medical_note=note)
+    date = note_entry.charttime
+    return render_template('index.html', medical_note=note, date=date)
 
 if __name__ == '__main__':
     app.run(debug=True)
