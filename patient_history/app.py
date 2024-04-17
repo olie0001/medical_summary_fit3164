@@ -1,16 +1,17 @@
 from flask import Flask, render_template
 from flask_sqlalchemy import SQLAlchemy
-from transformers import AutoTokenizer, BioGptForCausalLM
+from transformers import AutoTokenizer, BertLMHeadModel
 
 # NLP code
 def summarise(note):
-    # BioGPT
-    tokenizer = AutoTokenizer.from_pretrained("microsoft/biogpt")
-    model = BioGptForCausalLM.from_pretrained("microsoft/biogpt")
+    # BERT's microsoft/BiomedNLP-BiomedBERT-base-uncased-abstract model
+    model_name = "microsoft/BiomedNLP-BiomedBERT-base-uncased-abstract"
+    model = BertLMHeadModel.from_pretrained(model_name, is_decoder=True)
+    tokenizer = AutoTokenizer.from_pretrained(model_name)
 
-    # Tokenization and summarisation
-    inputs = tokenizer.encode("summarize: " + note, return_tensors="pt", max_length=1024, truncation=True)
-    summary_ids = model.generate(inputs, max_length=1025, min_length=200, length_penalty=2.0, num_beams=4, early_stopping=True)
+    # Tokenize the medical note using the this model and summarise the note
+    inputs = tokenizer.encode("summarize: " + note, return_tensors="pt", max_length=512, truncation=True)
+    summary_ids = model.generate(inputs, max_length=513, min_length=50, num_beams=4, early_stopping=True)
     summary = tokenizer.decode(summary_ids[0], skip_special_tokens=True)
 
     return summary
