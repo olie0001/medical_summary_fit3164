@@ -1,5 +1,3 @@
-<!--{{ medical_note }}-->
-
 <!DOCTYPE HTML>
 
 <html lang="en"> 
@@ -26,7 +24,6 @@
   </head> 
 
   <body> 
-    <!--NAV BAR-->
     <header>
         <nav class="navbar navbar-expand navbar-dark bg-success">
             <!--Heading-->
@@ -36,12 +33,11 @@
                 </a>
             </div>
             <!--Search Bar-->
-            <form class="d-flex" id="search_patient" role="search">
-                <input class="form-control me-2" type ="search" id="patient_id" name ="q" placeholder="Search Patient...">
-                <div style="padding-right: 30px;">
-                    <button class="btn btn-primary">Search</button>
-                </div>
+            <form class="d-flex" id="search_patient" action="/search" method="post" role="search">
+                <input class="form-control me-2" type="search" id="patient_id" name="subject_id" placeholder="Enter Subject ID...">
+                <button class="btn btn-primary" type="submit">Search</button>
             </form>
+            
         </nav>
     </header>
 
@@ -51,8 +47,14 @@
         <!--Patient Number-->
         <div class="container">
             <div class="row">
-                <div class="col-3"><h2>Patient Number:</h2></div>
-                <div class="col-9"><h2>123459045094</h2></div>
+                <div class="col-3"><h2>Patient ID:</h2></div>
+                <div class="col-9">
+                    {% if discharge_arr %}
+                        <h2>{{ discharge_arr[0].subject_id }}</h2>
+                    {% else %}
+                        <h2>No Patient Selected</h2>
+                    {% endif %}
+                </div>
             </div>
         </div>
 
@@ -93,42 +95,27 @@
             </div>
             <div class="row">
                 <strong>Discharge Date</strong>
-                <!--Timeline-->
                 <div class="col-4">
-                    <div id="list-1" class="list-group ">
-                        <a class="list-group-item list-group-item-action" href="#list-item-1">
-                            Date 1: Abdominal Pain
-                        </a>
-                        <a class="list-group-item list-group-item-action" href="#list-item-2">
-                            Date 2: Altered mental status
-                        </a>
-                        <a class="list-group-item list-group-item-action" href="#list-item-3">
-                            Date 3: Abdominal fullness and discomfort
-                        </a>
-                        <a class="list-group-item list-group-item-action" href="#list-item-4">
-                            Date 4: Worsening ABD distension and pain
-                        </a>
+                    <div id="discharge-list" class="list-group ">
+                        {% for discharge in discharge_arr %}
+                            <a class="list-group-item list-group-item-action" href="#discharge-{{ loop.index }}">
+                                {{ discharge.storetime if discharge.storetime else 'N/A' }}: {{ discharge.complaint }}
+                            </a>
+                        {% else %}
+                            <div>No discharge records found</div>
+                        {% endfor %}
                     </div>
                 </div>
-                <!--Medical Note-->
                 <div class="col-8 text-bg-success">
-                    <div data-bs-spy="scroll" data-bs-target="#list-1" data-bs-smooth-scroll="true" class="scrollspy-example" tabindex="0">
-                        <h4 id="list-item-1">Date 1: Abdominal Pain</h4>
-                        <p>
-                            {{ medical_note }}
-                        </p>
-                        <h4 id="list-item-2">Date 2: Altered mental status</h4>
-                        <p>
-                            ...<br>...<br>...<br>...<br>
-                        </p>
-                        <h4 id="list-item-3">Date 3: Abdominal fullness and discomfort</h4>
-                        <p>
-                            ...<br>...<br>...<br>...<br>
-                        </p>
-                        <h4 id="list-item-4">Date 4: Worsening ABD distension and pain</h4>
-                        <p>
-                            ...<br>...<br>...<br>...<br>
-                        </p>
+                    <div data-bs-spy="scroll" data-bs-target="#discharge-list" data-bs-smooth-scroll="true" class="scrollspy-example" tabindex="0">
+                        {% for discharge in discharge_arr %}
+                            <h4 id="discharge-{{ loop.index }}">{{ discharge.storetime if discharge.storetime else 'N/A' }}: {{ discharge.complaint }}</h4>
+                            <p>
+                                {{ discharge.text }}
+                            </p>
+                        {% else %}
+                            <div>No discharge records found</div>
+                        {% endfor %}
                     </div>
                 </div>
             </div>
@@ -190,6 +177,7 @@
                     </div>
                 </div>
             </div>
+            <!--Examination-->
             <div id="Examination" class="tab-pane fade">
                 <br>
                 <div class="row">
