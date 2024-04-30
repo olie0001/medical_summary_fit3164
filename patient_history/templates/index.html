@@ -33,10 +33,10 @@
                 </a>
             </div>
             <!--Search Bar-->
-            <form class="d-flex" id="search_patient" role="search">
-                <input class="form-control me-2" type ="search" id="patient_id" name ="q" placeholder="Search Patient...">
+            <form class="d-flex" id="search_patient" action="/search" method="post" role="search">
+                <input class="form-control me-2" type ="search" id="patient_id" name ="subject_id" placeholder="Enter Subject ID...">
                 <div style="padding-right: 30px;">
-                    <button class="btn btn-primary">Search</button>
+                    <button class="btn btn-primary" type="submit">Search</button>
                 </div>
             </form>
         </nav>
@@ -48,8 +48,14 @@
         <!--Patient Number-->
         <div class="container">
             <div class="row">
-                <div class="col-3"><h2>Patient Number:</h2></div>
-                <div class="col-9"><h2>123459045094</h2></div>
+                <div class="col-3"><h2>Patient ID:</h2></div>
+                <div class="col-9">
+                    {% if discharge_arr %}
+                        <h2>{{ subject_id }}</h2>
+                    {% else %}
+                        <h2>No Patient Selected</h2>
+                    {% endif %}
+                </div>
             </div>
         </div>
 
@@ -73,7 +79,7 @@
                             </div>
                             <div class="row">
                                 <div class="col-2"><p class="card-text">Sex:</p></div>
-                                <div class="col-10"><p class="card-text">[Sex]</p></div>
+                                <div class="col-10"><p class="card-text">{{ patient_sex }}</p></div>
                             </div>
                         </div>
                     </div>
