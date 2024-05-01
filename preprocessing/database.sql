@@ -1,3 +1,5 @@
+-- Discharge data
+-- TODO: Add the new columns
 CREATE TABLE public.discharge_data(
     note_id character varying(15) NOT NULL,
     subject_id character varying(8) NOT NULL,
@@ -10,6 +12,8 @@ CREATE TABLE public.discharge_data(
     PRIMARY KEY (note_id)
 );
 
+-- Radiology data
+-- TODO: Add the new columns
 CREATE TABLE public.radiology_data (
     note_id character varying(15) NOT NULL PRIMARY KEY,
     subject_id character varying(8) NOT NULL,
