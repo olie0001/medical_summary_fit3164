@@ -1,0 +1,61 @@
+body {
+    background-color: #dbdbdb;
+}
+
+.navbar{
+   border-radius: 10px;
+}
+
+.form-control {
+    border-radius: 20px; /* Rounded edges */
+    border: 2px solid white; /* White border */
+    padding-right: 30px; /* Make space for the icon inside the input */
+    background-color: #dbdbdb;
+    margin-right: -1px;
+}
+.form-control::placeholder {
+    color: #a09d9d; /* Lighter text for placeholder */
+}
+.btn-primary {
+    color: white;
+    border-radius: 20px; /* Rounded edges for button */
+    background-color: white;
+    padding: 0 12px; /* Padding around icon */
+    vertical-align: middle; /* Aligns button properly with input */
+    border: 2px solid green;
+}
+
+.btn-primary:hover {
+    background-color: green; /* Change background to green */
+    color: white; /* Change text/icon color to white for contrast */
+}
+
+.fa-search {
+    color: rgb(83, 82, 82); /* Gray color for the icon */
+}
+
+.btn-primary:not(:disabled):not(.disabled):active,
+    .btn-primary:not(:disabled):not(.disabled).active,
+    .show > .btn-primary.dropdown-toggle {
+        background-color: darkgreen; /* Darker shade for active state */
+        color: white;
+}
+.btn-primary:focus {
+    background-color: green;
+    color: white;
+    box-shadow: 0 0 0 0.2rem rgba(0, 128, 0, 0.5); /* Adjust the box-shadow color to match */
+}
+
+.row{
+    background-color: white;
+    border-radius: 20px;
+}
+
+
+.card-body, .card, .row, .col-12 {
+    background-color: white; 
+    border-radius: 20px;
+    border: none;  /* Explicitly remove borders */
+    box-shadow: none;  /* Remove any shadows */
+}
+
