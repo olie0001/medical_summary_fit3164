@@ -2,6 +2,12 @@ body {
     background-color: #dbdbdb;
 }
 
+.row, .h3{
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+/* navigation bar */
 .navbar{
    border-radius: 10px;
 }
@@ -16,6 +22,8 @@ body {
 .form-control::placeholder {
     color: #a09d9d; /* Lighter text for placeholder */
 }
+
+/* search button */
 .btn-primary {
     color: white;
     border-radius: 20px; /* Rounded edges for button */
@@ -46,6 +54,7 @@ body {
     box-shadow: 0 0 0 0.2rem rgba(0, 128, 0, 0.5); /* Adjust the box-shadow color to match */
 }
 
+/* patient details */
 .row{
     background-color: white;
     border-radius: 20px;
@@ -59,3 +68,69 @@ body {
     box-shadow: none;  /* Remove any shadows */
 }
 
+.col-4{
+    padding: 10px;
+}
+
+/* container that containes the whole discharge group item*/
+.container{
+    height: auto;
+}
+
+/* date list item */
+.list-group-item.active {
+    background-color: #28a745; /* Green */
+    color: white; /* Text color */
+    border-color: white;
+}
+
+.list-group-item {
+    border-radius: 20px; /* Border radius */
+    margin-top: 10px;
+    margin-bottom: 10px; /* Add margin between each list item */
+}
+
+.list-group{
+    border-radius: 20px;
+}
+
+/* summarised note section*/
+.col-8{
+    padding: 10px;
+    border-radius: 20px;
+}
+
+
+/* scroll bar of note*/
+::-webkit-scrollbar {
+    width: 10px; /* Set the width of the scrollbar */
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: white; /* Set the color of the scrollbar thumb */
+    border-color: black;
+    border-radius: 20px; /* Set the border radius of the scrollbar thumb */
+
+}
+
+::-webkit-scrollbar-corner{
+    display:none;
+}
+
+
+.tab-pane,.tab-content{
+    border-radius: 20px;
+    padding:10px;
+}
+
+/* Styling for nav-item border */
+.nav-item {
+    border-color: #ffffff; /* Change border color as needed */
+    border-radius: 20px;
+    padding:10px;
+}
+
+/* Styling for non-active nav-link color */
+.nav-link:not(.active) {
+    color: #dbdbdb; /* Change color for non-active nav-link */
+}
