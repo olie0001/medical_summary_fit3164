@@ -1,3 +1,5 @@
+<!--{{ medical_note }}-->
+
 <!DOCTYPE HTML>
 
 <html lang="en"> 
@@ -9,7 +11,32 @@
     <meta charset="utf-8">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href= "https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" /> 
-  
+    <script src="https://kit.fontawesome.com/6ec9c7cfba.js"crossorigin="anonymous"></script>
+    <!--
+    <script>
+        function activateListItem(item) {
+            // Remove the "active" class from all list items
+            var listItems = document.querySelectorAll('.list-group-item');
+            listItems.forEach(function (li) {
+                li.classList.remove('active');
+            });
+    
+            // Add the "active" class to the clicked list item
+            item.classList.add('active');
+        }
+    </script>
+    -->
+    <script>
+        // Function to reinitialize scrollspy on tab change
+        $('#myTabContent').on('shown.bs.tab', function (e) {
+            var target = $(e.target).attr("href"); // Get the target tab pane
+            $(target).find('.scrollspy-example').each(function () {
+                var spy = new bootstrap.ScrollSpy($(this)[0], {
+                    target: '#list-1' // Target the same scrollspy list
+                });
+            });
+        });
+    </script>
     <!--CSS-->
     <link rel="stylesheet" href="static/style.css" />
 
@@ -24,20 +51,22 @@
   </head> 
 
   <body> 
+    <!--NAV BAR-->
     <header>
-        <nav class="navbar navbar-expand navbar-dark bg-success">
+        <nav class="navbar navbar-expand ">
             <!--Heading-->
             <div class="container-fluid">
                 <a class="navbar-brand">
-                    <h2>Medical History</h2>
+                    <h2>Medical History Summariser</h2>
                 </a>
             </div>
             <!--Search Bar-->
             <form class="d-flex" id="search_patient" action="/search" method="post" role="search">
-                <input class="form-control me-2" type="search" id="patient_id" name="subject_id" placeholder="Enter Subject ID...">
-                <button class="btn btn-primary" type="submit">Search</button>
+                <input class="form-control me-2" type ="search" id="subject_id" name ="subject_id" placeholder="Search Patient..">
+                <button class="btn btn-primary" type="button">
+                    <i class="fas fa-search"></i>
+                </button>
             </form>
-            
         </nav>
     </header>
 
@@ -47,14 +76,8 @@
         <!--Patient Number-->
         <div class="container">
             <div class="row">
-                <div class="col-3"><h2>Patient ID:</h2></div>
-                <div class="col-9">
-                    {% if discharge_arr %}
-                        <h2>{{ discharge_arr[0].subject_id }}</h2>
-                    {% else %}
-                        <h2>No Patient Selected</h2>
-                    {% endif %}
-                </div>
+                <div class="col-3"><h3>Patient Number:</h3></div>
+                <div class="col-9"><h3>{{ subject_id }}</h3></div>
             </div>
         </div>
 
@@ -70,15 +93,15 @@
                             <br>
                             <div class="row">
                                 <div class="col-2"><p class="card-text">Name:</p></div>
-                                <div class="col-10"><p class="card-text">[Patient's Name]</p></div>
+                                <div class="col-10"><p class="card-text">{{ subject_name}}</p></div>
                             </div>
                             <div class="row">
                                 <div class="col-2"><p class="card-text">Date of Birth:</p></div>
-                                <div class="col-10"><p class="card-text">[Date of Birth]</p></div>
+                                <div class="col-10"><p class="card-text">{{ subject_dob }}</p></div>
                             </div>
                             <div class="row">
                                 <div class="col-2"><p class="card-text">Sex:</p></div>
-                                <div class="col-10"><p class="card-text">[Sex]</p></div>
+                                <div class="col-10"><p class="card-text">{{ patient_sex }}</p></div>
                             </div>
                         </div>
                     </div>
@@ -94,133 +117,104 @@
                 <h1 class="text-success">Patient History</h1>
             </div>
             <div class="row">
-                <strong>Discharge Date</strong>
+                <h3>Discharge Date</h3>
+                <!--Timeline-->
                 <div class="col-4">
-                    <div id="discharge-list" class="list-group ">
+                    <div id="list-1" class="list-group">
                         {% for discharge in discharge_arr %}
-                            <a class="list-group-item list-group-item-action" href="#discharge-{{ loop.index }}">
-                                {{ discharge.storetime if discharge.storetime else 'N/A' }}: {{ discharge.complaint }}
+                            <a class="list-group-item list-group-item-action" href="#list-item-{{ loop.index }}">
+                                Date {{ loop.index }}: {{ discharge.storetime.strftime('%Y-%m-%d') if discharge.storetime else 'N/A' }}
                             </a>
                         {% else %}
-                            <div>No discharge records found</div>
+                            <div>No discharge records found.</div>
                         {% endfor %}
                     </div>
-                </div>
-                <div class="col-8 text-bg-success">
-                    <div data-bs-spy="scroll" data-bs-target="#discharge-list" data-bs-smooth-scroll="true" class="scrollspy-example" tabindex="0">
-                        {% for discharge in discharge_arr %}
-                            <h4 id="discharge-{{ loop.index }}">{{ discharge.storetime if discharge.storetime else 'N/A' }}: {{ discharge.complaint }}</h4>
-                            <p>
-                                {{ discharge.text }}
-                            </p>
-                        {% else %}
-                            <div>No discharge records found</div>
-                        {% endfor %}
+                </div>                
+                <!--Medical Note-->
+                <div class="col-8 text-bg-success" style="border-radius: 20px;">
+                    <!-- Nav tabs -->
+                    <ul class="nav nav-tabs" id="myTab" role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link active" id="history-tab" data-bs-toggle="tab" data-bs-target="#history" type="button" role="tab" aria-controls="discharge" aria-selected="true">History</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="note2-tab" data-bs-toggle="tab" data-bs-target="#note2" type="button" role="tab" aria-controls="note2" aria-selected="false">Note 2</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="note3-tab" data-bs-toggle="tab" data-bs-target="#note3" type="button" role="tab" aria-controls="note3" aria-selected="false">Note 3</button>
+                        </li>
+                        <!-- Add more tab buttons as needed -->
+                    </ul>
+                
+                    <!-- Tab panes -->
+                    <div class="tab-content" id="myTabContent">
+                        <!-- Discharge tab pane -->
+                        <div class="tab-pane fade show active" id="history" role="tabpanel" aria-labelledby="discharge-tab">
+                            <div data-bs-spy="scroll" data-bs-target="#list-1" data-bs-smooth-scroll="true" class="scrollspy-example" tabindex="0">
+                                {% for discharge in discharge_arr %}
+                                    <h4 id="list-item-{{ loop.index }}">Date {{ loop.index }}: {{ discharge.storetime.strftime('%Y-%m-%d') if discharge.storetime else 'N/A' }}</h4>
+                                    <p>
+                                        {{ discharge.text }}
+                                    </p>
+                                {% else %}
+                                    <p>No discharge data available.</p>
+                                {% endfor %}
+                            </div>
+                        </div>
+                        <!-- Note 2 pane -->
+                        <div class="tab-pane fade" id="note2" role="tabpanel" aria-labelledby="note2-tab">
+                            <div data-bs-spy="scroll" data-bs-target="#list-1" data-bs-smooth-scroll="true" class="scrollspy-example" tabindex="1">
+                                <p> some text</p>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="note3" role="tabpanel" aria-labelledby="note3-tab">
+                            <div data-bs-spy="scroll" data-bs-target="#list-1" data-bs-smooth-scroll="true" class="scrollspy-example" tabindex="2">
+                                <p> some text</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
+                              
             </div>
         </div>
 
         <br><br>
-
+        
         <!--Radiology History-->
         <div class="container">
             <div class="my-4">
                 <h1 class="text-success">Radiology History</h1>
             </div>
-            <ul class="nav nav-tabs">
-                <li><a class="nav-link active" data-bs-toggle="tab" href="#Indication">Indication</a></li>
-                <li><a class="nav-link" data-bs-toggle="tab" href="#Examination">Examination</a></li>
-            </ul>
-            <div class="tab-content">
-                <!--Indication-->
-                <div id="Indication" class="tab-pane fade show active">
-                    <br>
-                    <div class="row">
-                        <strong>Radiology Date</strong>
-                        <div class="col-4">
-                            <div id="list-2" class="list-group">
-                                <a class="list-group-item list-group-item-action" href="#list-item-1">
-                                    Date 1: Chest
-                                </a>
-                                <a class="list-group-item list-group-item-action" href="#list-item-2">
-                                    Date 2: Liver
-                                </a>
-                                <a class="list-group-item list-group-item-action" href="#list-item-3">
-                                    Date 3: Gallblader
-                                </a>
-                                <a class="list-group-item list-group-item-action" href="#list-item-4">
-                                    Date 4: Parancentesis
-                                </a>
-                            </div>
-                        </div>
-                        <div class="col-8 text-bg-success">
-                            <div data-bs-spy="scroll" data-bs-target="#list-2" data-bs-smooth-scroll="true" class="scrollspy-example" tabindex="0">
-                                <h4 id="list-item-1">Date 1: Chest</h4>
-                                <p>
-                                    ...<br>...<br>...<br>...<br>
-                                </p>
-                                <h4 id="list-item-2">Date 2: Liver</h4>
-                                <p>
-                                    ...<br>...<br>...<br>...<br>
-                                </p>
-                                <h4 id="list-item-3">Date 3: Gallblader</h4>
-                                <p>
-                                    ...<br>...<br>...<br>...<br>
-                                </p>
-                                <h4 id="list-item-4">Date 4: Parancentesis</h4>
-                                <p>
-                                    ...<br>...<br>...<br>...<br>
-                                </p>
-                            </div>
-                        </div>
+            <div class="row">
+                <h3>Radiology Date</h3>
+                <!--Timeline-->
+                <div class="col-4">
+                    <div id="list-2" class="list-group">
+                        {% for radiology in radiology_arr %}
+                            <a class="list-group-item list-group-item-action" href="#list-item-{{ loop.index }}">
+                                Date {{ loop.index }}: {{ radiology.storetime.strftime('%Y-%m-%d') if radiology.storetime else 'N/A' }}
+                            </a>
+                        {% else %}
+                            <div>No radiology records found.</div>
+                        {% endfor %}
                     </div>
-                </div>
-            </div>
-            <!--Examination-->
-            <div id="Examination" class="tab-pane fade">
-                <br>
-                <div class="row">
-                    <strong>Radiology Date</strong>
-                    <div class="col-4">
-                        <div id="list-3" class="list-group ">
-                            <a class="list-group-item list-group-item-action" href="#list-item-1">
-                                Date 1: E1
-                            </a>
-                            <a class="list-group-item list-group-item-action" href="#list-item-2">
-                                Date 2: E2
-                            </a>
-                            <a class="list-group-item list-group-item-action" href="#list-item-3">
-                                Date 3: E3
-                            </a>
-                            <a class="list-group-item list-group-item-action" href="#list-item-4">
-                                Date 4: E4
-                            </a>
-                        </div>
+                </div>                
+                <!--Radiology Note-->
+                <div class="col-8 text-bg-success">
+                    <div data-bs-spy="scroll" data-bs-target="#list-2" data-bs-smooth-scroll="true" class="scrollspy-example" tabindex="0" style="max-height: 500px; overflow-y: auto;">
+                        {% for radiology in radiology_arr %}
+                            <h4 id="list-item-{{ loop.index }}">Date {{ loop.index }}: {{ radiology.storetime.strftime('%Y-%m-%d') if radiology.storetime else 'N/A' }}</h4>
+                            <p>
+                                {{ radiology.text }}
+                            </p>
+                        {% else %}
+                            <p>No radiology data available.</p>
+                        {% endfor %}
                     </div>
-                    <div class="col-8 text-bg-success">
-                        <div data-bs-spy="scroll" data-bs-target="#list-3" data-bs-smooth-scroll="true" class="scrollspy-example" tabindex="0">
-                            <h4 id="list-item-1">Date 1: E1</h4>
-                            <p>
-                                ...<br>...<br>...<br>...<br>
-                            </p>
-                            <h4 id="list-item-2">Date 2: E2</h4>
-                            <p>
-                                ...<br>...<br>...<br>...<br>
-                            </p>
-                            <h4 id="list-item-3">Date 3: E3</h4>
-                            <p>
-                                ...<br>...<br>...<br>...<br>
-                            </p>
-                            <h4 id="list-item-4">Date 4: E4</h4>
-                            <p>
-                                ...<br>...<br>...<br>...<br>
-                            </p>
-                        </div>
-                    </div>
-                </div>
+                </div>               
             </div>
         </div>
+
     </main>
 
     <!--JavaScript-->
