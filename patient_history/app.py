@@ -47,6 +47,13 @@ class DischargeData(db.Model):
     subject_id = db.Column(db.String(8), nullable=False)
     text = db.Column(db.Text)
 
+class RadiologyData(db.Model):
+    __tablename__ = 'radiology_data'
+    note_id = db.Column(db.String(), primary_key=True)
+    storetime = db.Column(db.Date)
+    subject_id = db.Column(db.String(8), nullable=False)
+    text = db.Column(db.Text)
+
 @app.route('/', methods=['GET'])
 def index():
     return render_template('index.html')
@@ -61,8 +68,6 @@ def search():
 
     # Patient History
     discharge_entries = DischargeData.query.filter_by(subject_id=subject_id).all()
-    if not discharge_entries:
-        return render_template('index.html', discharge_arr=[], no_data="No records found", subject_id=subject_id)
     discharge_arr = []
     for entry in discharge_entries:
         unsummarised_note = entry.text
@@ -75,6 +80,13 @@ def search():
             'text': summarised_note,
         }
         discharge_arr.append(entry_data)
+
+    # Radiology History
+    radiology_entries = RadiologyData.query.filter_by(subject_id=subject_id).all()
+    radiology_arr = []
+    for entry in radiology_entries:
+        unsummarised_note = entry.text
+        summarised_note = summarise(unsummarised_note)
 
     return render_template('index.html', discharge_arr=discharge_arr, subject_id=subject_id, subject_dob=subject_dob, subject_name=subject_name, patient_sex=patient_sex)
 
