@@ -61,8 +61,8 @@
                 </a>
             </div>
             <!--Search Bar-->
-            <form class="d-flex" id="search_patient" role="search">
-                <input class="form-control me-2" type ="search" id="patient_id" name ="q" placeholder="Search Patient..">
+            <form class="d-flex" id="search_patient" action="/search" method="post" role="search">
+                <input class="form-control me-2" type ="search" id="subject_id" name ="subject_id" placeholder="Search Patient..">
                 <button class="btn btn-primary" type="button">
                     <i class="fas fa-search"></i>
                 </button>
@@ -77,7 +77,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-3"><h3>Patient Number:</h3></div>
-                <div class="col-9"><h3>123459045094</h3></div>
+                <div class="col-9"><h3>{{ subject_id }}</h3></div>
             </div>
         </div>
 
@@ -93,15 +93,15 @@
                             <br>
                             <div class="row">
                                 <div class="col-2"><p class="card-text">Name:</p></div>
-                                <div class="col-10"><p class="card-text">[Patient's Name]</p></div>
+                                <div class="col-10"><p class="card-text">{{ subject_name}}</p></div>
                             </div>
                             <div class="row">
                                 <div class="col-2"><p class="card-text">Date of Birth:</p></div>
-                                <div class="col-10"><p class="card-text">[Date of Birth]</p></div>
+                                <div class="col-10"><p class="card-text">{{ subject_dob }}</p></div>
                             </div>
                             <div class="row">
                                 <div class="col-2"><p class="card-text">Sex:</p></div>
-                                <div class="col-10"><p class="card-text">[Sex]</p></div>
+                                <div class="col-10"><p class="card-text">{{ patient_sex }}</p></div>
                             </div>
                         </div>
                     </div>
