@@ -41,12 +41,11 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 
 class DischargeData(db.Model):
-    __tablename__ = 'discharge_first_10'
+    __tablename__ = 'discharge_data'
     note_id = db.Column(db.String(), primary_key=True)
     storetime = db.Column(db.Date)
     subject_id = db.Column(db.String(8), nullable=False)
     text = db.Column(db.Text)
-
 
 @app.route('/', methods=['GET'])
 def index():
