@@ -47,6 +47,16 @@ class DischargeData(db.Model):
     subject_id = db.Column(db.String(8), nullable=False)
     text = db.Column(db.Text)
 
+class RadiologyData(db.Model):
+    __tablename__ = 'radiology_data'
+    note_id = db.Column(db.String(15), primary_key=True)
+    subject_id = db.Column(db.String(8), nullable=False)
+    storetime = db.Column(db.Date)
+    text = db.Column(db.Text)
+    examination = db.Column(db.Text, nullable=False)
+    summarised = db.Column(db.Text, nullable=False)
+
+
 
 @app.route('/', methods=['GET'])
 def index():
@@ -76,9 +86,21 @@ def search():
         }
         discharge_arr.append(entry_data)
 
+    # Radiology
+    radiology_entries = RadiologyData.query.filter_by(subject_id=subject_id).all()
+    radiology_arr = []
+    for entry in radiology_entries:
+        entry_data = {
+            'note_id': entry.note_id,
+            'storetime': entry.storetime,
+            'text': entry.summarised,
+            'subject_id': subject_id,
+            'examination': entry.examination
+        }
+        radiology_arr.append(entry_data)
 
+    return render_template('index.html', discharge_arr=discharge_arr, radiology_arr=radiology_arr, subject_id=subject_id, subject_dob=subject_dob, subject_name=subject_name, patient_sex=patient_sex)
 
-    return render_template('index.html', discharge_arr=discharge_arr, subject_id=subject_id, subject_dob=subject_dob, subject_name=subject_name, patient_sex=patient_sex)
 
 if __name__ == '__main__':
     app.run(debug=True)

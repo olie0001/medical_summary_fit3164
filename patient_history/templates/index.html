@@ -63,7 +63,7 @@
             <!--Search Bar-->
             <form class="d-flex" id="search_patient" action="/search" method="post" role="search">
                 <input class="form-control me-2" type ="search" id="subject_id" name ="subject_id" placeholder="Search Patient..">
-                <button class="btn btn-primary" type="button">
+                <button class="btn btn-primary" type="submit">
                     <i class="fas fa-search"></i>
                 </button>
             </form>
@@ -135,13 +135,13 @@
                     <!-- Nav tabs -->
                     <ul class="nav nav-tabs" id="myTab" role="tablist">
                         <li class="nav-item" role="presentation">
-                            <button class="nav-link active" id="history-tab" data-bs-toggle="tab" data-bs-target="#history" type="button" role="tab" aria-controls="discharge" aria-selected="true">History</button>
+                            <button class="nav-link active" id="history-tab" data-bs-toggle="tab" data-bs-target="#history" type="button" role="tab" aria-controls="discharge" aria-selected="true">History of Present Illness</button>
                         </li>
                         <li class="nav-item" role="presentation">
-                            <button class="nav-link" id="note2-tab" data-bs-toggle="tab" data-bs-target="#note2" type="button" role="tab" aria-controls="note2" aria-selected="false">Note 2</button>
+                            <button class="nav-link" id="note2-tab" data-bs-toggle="tab" data-bs-target="#note2" type="button" role="tab" aria-controls="note2" aria-selected="false">Family History</button>
                         </li>
                         <li class="nav-item" role="presentation">
-                            <button class="nav-link" id="note3-tab" data-bs-toggle="tab" data-bs-target="#note3" type="button" role="tab" aria-controls="note3" aria-selected="false">Note 3</button>
+                            <button class="nav-link" id="note3-tab" data-bs-toggle="tab" data-bs-target="#note3" type="button" role="tab" aria-controls="note3" aria-selected="false">Past Medical History</button>
                         </li>
                         <!-- Add more tab buttons as needed -->
                     </ul>
@@ -192,7 +192,7 @@
                     <div id="list-2" class="list-group">
                         {% for radiology in radiology_arr %}
                             <a class="list-group-item list-group-item-action" href="#list-item-{{ loop.index }}">
-                                Date {{ loop.index }}: {{ radiology.storetime.strftime('%Y-%m-%d') if radiology.storetime else 'N/A' }}
+                                Date {{ loop.index }}: {{ radiology.storetime.strftime('%Y-%m-%d') if radiology.storetime else 'N/A' }} - {{ radiology.examination }}
                             </a>
                         {% else %}
                             <div>No radiology records found.</div>
