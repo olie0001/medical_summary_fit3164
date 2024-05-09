@@ -1,7 +1,39 @@
 from flask import Flask, render_template, request
 from flask_sqlalchemy import SQLAlchemy
-from transformers import pipeline  # Import pipeline for easy use of T5
+from transformers import AutoTokenizer, BertLMHeadModel
 import re
+from faker import Faker
+import random
+from datetime import datetime, timedelta
+
+def summarise(note):
+    model_name = "microsoft/BiomedNLP-BiomedBERT-base-uncased-abstract"
+    model = BertLMHeadModel.from_pretrained(model_name, is_decoder=True)
+    tokenizer = AutoTokenizer.from_pretrained(model_name)
+    inputs = tokenizer.encode("summarize: " + note, return_tensors="pt", max_length=512, truncation=True)
+    summary_ids = model.generate(inputs, max_length=513, min_length=50, num_beams=4, early_stopping=True)
+    summary = tokenizer.decode(summary_ids[0], skip_special_tokens=True)
+    return summary
+
+def extract(note):
+    complaint = re.search(r'chief complaint\s*:\s*(.*?)(major surgical|history of present illness|$)', note, re.IGNORECASE)
+    complaint = complaint.group(1).strip()
+    patient_sex = re.search(r'sex\s*:\s*([MF])', note, re.IGNORECASE)
+    patient_sex = patient_sex.group(1).strip()
+    if patient_sex == 'f':
+        patient_sex = 'Female'
+    elif patient_sex == 'm':
+        patient_sex = 'Male'
+    return complaint, patient_sex
+
+def generate_random_dob(start_year=1930, end_year=2020):
+    start_date = datetime(year=start_year, month=1, day=1)
+    end_date = datetime(year=end_year, month=12, day=31)
+    time_between_dates = end_date - start_date
+    days_between_dates = time_between_dates.days
+    random_number_of_days = random.randrange(days_between_dates)
+    random_date = start_date + timedelta(days=random_number_of_days)
+    return random_date
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:ds12@localhost:5433/patient_note'
@@ -15,58 +47,6 @@ class DischargeData(db.Model):
     subject_id = db.Column(db.String(8), nullable=False)
     text = db.Column(db.Text)
 
-# Initialize the summarization pipeline with the T5 model pre-trained for medical summarization
-summarizer = pipeline("summarization", model="Falconsai/medical_summarization", tokenizer="t5-large")
-
-def extract_sections(note):
-    sections = {}
-    lines = note.split('\n')
-    current_header = None
-    content = []
-    for line in lines:
-        line = line.strip()
-        if re.match(r'^[A-Z][\w\s-]*(?::)\s*$', line):
-            if current_header is not None:
-                sections[current_header] = ' '.join(content)
-                print(f"Extracted section '{current_header}': {sections[current_header][:100]}...")  # Detailed section print
-            current_header = line.rstrip(':')
-            content = []
-        else:
-            content.append(line)
-    if current_header is not None:
-        sections[current_header] = ' '.join(content)
-        print(f"Extracted section '{current_header}': {sections[current_header][:100]}...")  # Detailed section print
-    return sections
-
-def clean_text(text):
-    text = re.sub(r'_{2,}|={2,}|-{2,}', '', text)
-    text = re.sub(r'\s+', ' ', text)
-    return text.strip()
-
-def summarize_section(text):
-    cleaned_text = clean_text(text)
-    tokens = cleaned_text.split()
-    token_length = len(tokens)
-
-    # Adjusting the threshold for short texts dynamically
-    if token_length < 30:  # Lowered threshold to consider shorter texts
-        print(f"Skipping summarization for short text: {cleaned_text[:60]}")
-        return cleaned_text
-
-    try:
-        # Dynamically setting max_length based on input length
-        summary = summarizer(
-            cleaned_text,
-            max_length=max(60, int(token_length * 1.5)),  # Ensure at least 50 tokens as max_length
-            min_length=10,  # Minimum length of summary
-            truncation=True
-        )[0]['summary_text']
-        print(f"Summarized text for '{cleaned_text[:30]}...': {summary[:100]}")
-        return summary
-    except Exception as e:
-        print(f"Error during summarization: {str(e)}")
-        return cleaned_text  # Fallback to original text on error
-
 
 @app.route('/', methods=['GET'])
 def index():
@@ -74,24 +54,31 @@ def index():
 
 @app.route('/search', methods=['POST'])
 def search():
+    # Patient
     subject_id = request.form['subject_id']
+    fake = Faker()
+    subject_name = fake.name()
+    subject_dob = generate_random_dob().strftime('%Y-%m-%d')
+
+    # Patient History
     discharge_entries = DischargeData.query.filter_by(subject_id=subject_id).all()
     discharge_arr = []
-    if not discharge_entries:
-        return render_template('index.html', discharge_arr=[], no_data="No records found for ID: " + subject_id)
-
     for entry in discharge_entries:
-        sections = extract_sections(entry.text)
-        summarized_sections = {header: summarize_section(content) for header, content in sections.items()}
+        unsummarised_note = entry.text
+        summarised_note = summarise(unsummarised_note)
+        complaint, patient_sex = extract(summarised_note)
         entry_data = {
             'note_id': entry.note_id,
-            'storetime': entry.storetime.strftime("%Y-%m-%d %H:%M:%S"),
-            'text': "\n\n".join(f"{header}:\n{content}" for header, content in summarized_sections.items()),
+            'storetime': entry.storetime,
+            'complaint': complaint,
+            'text': summarised_note,
             'subject_id': subject_id
         }
         discharge_arr.append(entry_data)
 
-    return render_template('index.html', discharge_arr=discharge_arr)
+
+
+    return render_template('index.html', discharge_arr=discharge_arr, subject_id=subject_id, subject_dob=subject_dob, subject_name=subject_name, patient_sex=patient_sex)
 
 if __name__ == '__main__':
     app.run(debug=True)
