@@ -1,0 +1,324 @@
+note_id,subject_id,hadm_id,note_type,note_seq,charttime,storetime,text,examination,summarised
+10000032-RR-14,10000032,22595853.0,RR,14,2180-05-06 21:19:00,2180-05-06 23:32:00,"EXAMINATION:  CHEST (PA AND LAT)
+
+INDICATION:  ___ with new onset ascites  // eval for infection
+
+TECHNIQUE:  Chest PA and lateral
+
+COMPARISON:  None.
+
+FINDINGS: 
+
+There is no focal consolidation, pleural effusion or pneumothorax.  Bilateral
+nodular opacities that most likely represent nipple shadows. The
+cardiomediastinal silhouette is normal.  Clips project over the left lung,
+potentially within the breast. The imaged upper abdomen is unremarkable.
+Chronic deformity of the posterior left sixth and seventh ribs are noted.
+
+IMPRESSION: 
+
+No acute cardiopulmonary process.
+",CHEST (PA AND LAT),"There is no focal consolidation, pleural effusion or pneumothorax. Bilateral nodular opacities that most likely represent nipple shadows. The cardiomediastinal silhouette is normal. Clips project over the left lung, potentially within the breast. The imaged upper abdomen is unremarkable. Chronic deformity of the posterior left sixth and seventh ribs are noted. There is no acute cardiopulmonary process. The patient is in stable condition and is receiving treatment."
+10000032-RR-15,10000032,22595853.0,RR,15,2180-05-06 23:00:00,2180-05-06 23:26:00,"EXAMINATION:  LIVER OR GALLBLADDER US (SINGLE ORGAN)
+
+INDICATION:  ___ year-old female with cirrhosis, jaundice.
+
+TECHNIQUE:  Grey scale and color Doppler ultrasound images of the abdomen were
+obtained.
+
+COMPARISON:  None.
+
+FINDINGS: 
+
+LIVER: The liver is coarsened and nodular in echotexture. There is no focal
+liver mass. Main portal vein and its major branches are patent with normal
+hepatopetal flow.  The main hepatic artery shows normal arterial waveform. 
+There is a small amount of ascites.
+
+BILE DUCTS: There is no intrahepatic biliary dilation. The CBD measures 4 mm.
+
+GALLBLADDER: The gallbladder is contracted with a shadowing gallstone.
+
+PANCREAS: Imaged portion of the pancreas appears within normal limits, without
+masses or pancreatic ductal dilation, with portions of the pancreatic tail
+obscured by overlying bowel gas.
+
+SPLEEN: Normal echogenicity, measuring 13.5 cm.
+
+KIDNEYS: The right kidney measures 12.1 cm. The left kidney measures 13.4 cm.
+Normal cortical echogenicity and corticomedullary differentiation is seen
+bilaterally.
+RETROPERITONEUM: Visualized portions of aorta and IVC are within normal
+limits.
+
+IMPRESSION: 
+
+1. Nodular appearance of the liver compatible with cirrhosis. Signs of portal
+hypertension including small amount of ascites and splenomegaly.
+2.  Cholelithiasis.
+3.  Patent portal veins with normal hepatopetal flow.
+",LIVER OR GALLBLADDER US (SINGLE ORGAN),The liver is coarsened and nodular in echotexture. Main portal vein and its major branches are patent with normal hepatopetal flow. The main hepatic artery shows normal arterial waveform. There is a small amount of ascites. The gallbladder is contracted with a shadowing gallstone. The right kidney measures 12.1 cm and the left kidney measures 13.4 cm. The aorta and IVC are within normal limits. The left kidney has normal cortical echogenicity and corticomedullary differentiation.
+10000084-RR-12,10000084,,RR,12,2160-11-20 22:39:00,2160-11-20 22:50:00,"EXAMINATION:  CHEST (PA AND LAT)
+
+INDICATION:  History: ___ with weakness// ?PNA
+
+TECHNIQUE:  Chest PA and lateral
+
+COMPARISON:  None.
+
+FINDINGS: 
+
+Heart size is mildly enlarged.  The mediastinal and hilar contours are
+unremarkable.  The pulmonary vasculature is normal. Lungs are hyperinflated
+without focal consolidation.  Streaky atelectasis is noted in the lung bases. 
+No pleural effusion or pneumothorax is seen. There are no acute osseous
+abnormalities.  Moderate to severe compression deformity of a low thoracic
+vertebral body is of indeterminate age.
+
+IMPRESSION: 
+
+Mild atelectasis in the lung bases without focal consolidation. 
+Age-indeterminate moderate to severe compression deformity of a low thoracic
+vertebral body.
+",CHEST (PA AND LAT),Heart size is mildly enlarged. The mediastinal and hilar contours are unremarkable. The pulmonary vasculature is normal. Streaky atelectasis is noted in the lung bases. No pleural effusion or pneumothorax is seen. There are no acute osseous abnormalities. Moderate to severe compression deformity of a low thoracic vertebral body is of indeterminate age. There is no evidence that the patient has a history of weakness. The patient has no history of weakness in the chest.
+10000084-RR-13,10000084,,RR,13,2160-11-20 22:39:00,2160-11-20 23:13:00,"EXAMINATION:  CT HEAD W/O CONTRAST Q111 CT HEAD
+
+INDICATION:  History: ___ with confusion, incontinence, ataxia//
+?hydrocephalus, bleed
+
+TECHNIQUE:  Contiguous axial images of the brain were obtained without
+contrast. Coronal and sagittal reformations as well as bone algorithm
+reconstructions were provided and reviewed.
+
+DOSE:  Acquisition sequence:
+   1) Sequenced Acquisition 16.0 s, 16.0 cm; CTDIvol = 23.4 mGy (Body) DLP =
+375.0 mGy-cm.
+ Total DLP (Body) = 375 mGy-cm.
+
+COMPARISON:  None.
+
+FINDINGS: 
+
+There is no evidence of infarction, hemorrhage, edema, or mass.  There is
+prominence of the ventricles and sulci suggestive of involutional changes.
+
+There is no evidence of fracture.  The visualized portion of the remaining
+paranasal sinuses and middle ear cavities are clear.  The visualized portion
+of the orbits are unremarkable apart from bilateral lens replacements.
+
+IMPRESSION:
+
+
+1. No acute intracranial abnormality.  No hydrocephalus.
+",CT HEAD W/O CONTRAST Q111 CT HEAD,"There is no evidence of infarction, hemorrhage, edema, or mass. There is prominence of the ventricles and sulci suggestive of involutional changes. The visualized portion of the remaining paranasal sinuses and middle ear cavities are clear. No acute intracranial abnormality. No hydrocephalus. No fracture. No bleeding. No hemorrhage. No edema. No mass. No intravenous bleeding. No fluid on the brain."
+10000117-RR-10,10000117,,RR,10,2175-05-10 10:12:00,2175-05-11 10:37:00,"BILATERAL DIGITAL SCREENING MAMMOGRAM WITH CAD
+
+HISTORY:  Baseline screening.
+
+BILATERAL SCREENING MAMMOGRAM WITH ICAD COMPUTER AIDED DETECTION SOFTWARE
+VERSION 7.2:  There are scattered fibroglandular densities.  There are no
+dominant or spiculated masses, suspicious microcalcifications or areas of
+architectural distortion. There are no prior studies for comparison. If
+outside studies are made available an addendum will be issued.
+
+IMPRESSION:  No evidence of malignancy.  BI-RADS 1-negative.  Routine
+screening mammogram in one year is recommended.
+",N/A,"There are scattered fibroglandular densities. There are no dominant or spiculated masses, suspicious microcalcifications or areas of architectural distortion. No evidence of malignancy. Routine screening mammogram in one year is recommended. BI-RADS 1-negative. The American College of Radiology Appropriateness Criteria are evidence-based guidelines for specific clinical conditions that are reviewed every 3 years by a multidisciplinary expert panel. If outside studies are made available an addendum will be issued."
+10000117-RR-11,10000117,,RR,11,2177-05-23 13:18:00,2177-05-23 18:15:00,"INDICATION:  ___ female with right epigastric pain radiating to back,
+rule out gallstones.
+
+COMPARISON:  No previous exam for comparison.
+
+FINDINGS:  The hepatic architecture is unremarkable in appearance.  A small
+round hyperechoic lesion is seen in segment VI of the liver measuring 1.4 x
+1.4 x 1.8 cm.  This lesion is avascular on color Doppler imaging and the
+appearance clear represents a hemangioma.  A small similar appearing lesion is
+seen peripherally in the right lobe of the liver measuring 0.8 x 0.5 x 0.9 cm
+and also likely representing a small hemangioma.
+
+No biliary dilatation is seen and the common duct measures 0.3 cm.  The portal
+vein is patent with hepatopetal flow.  There are no gallstones.  The
+gallbladder is normal in appearance.  The pancreas and spleen are unremarkable
+and the spleen measures 9.7 cm.  No hydronephrosis is seen.  The right kidney
+measures 10.0 cm and the left kidney measures 9.9 cm.  The aorta is of normal
+caliber throughout.  The visualized portion of the IVC is unremarkable.
+
+IMPRESSION:
+1.  No gallstones and no signs of cholecystitis.
+2.  Two small hepatic hemangiomas.
+",N/A,"Female with right epigastric pain radiating to back, rule out gallstones. A small round hyperechoic lesion is seen in segment VI of the liver. The portal vein is patent with hepatopetal flow. The gallbladder is normal in appearance. The pancreas and spleen are unremarkable and the spleen measures 9.7 cm. No hydronephrosis is seen. The aorta is of normal caliber throughout. The visualized portion of the IVC is unremarkable."
+10000248-RR-11,10000248,,RR,11,2192-11-29 20:50:00,2192-11-29 21:19:00,"EXAMINATION:  CT OF THE ABDOMEN AND PELVIS
+
+INDICATION:  Expanding right flank hematoma. History of factor VIII
+deficiency.
+
+COMPARISON:  None.
+
+TECHNIQUE:  Multidetector CT images of the abdomen and pelvis were obtained
+with intravenous contrast. Sagittal and coronal reformations were also
+performed.
+
+DOSE:  463.1 mGy-cm.
+
+
+
+FINDINGS: 
+
+There is a small right-sided pleural effusion with minimal associated
+compressive atelectasis.  There is a moderate pectus excavatum deformity.
+
+The gallbladder, liver, pancreas, spleen, and adrenal glands appear within
+normal limits. The left kidney is duplex with entirely separate ureters up to
+the bladder.
+
+The stomach, small and large bowel appear within normal limits.
+
+The prostate, seminal vesicles, distal ureters and bladder appear within
+normal limits. The major arteries and veins appear patent. There is no
+lymphadenopathy or ascites.
+
+Fat stranding is present in subcutaneous tissues along the right flank.  The
+right posterior chest wall musculature is expansile and hyperattenuating
+suggesting hemorrhage with maximal axial ___ of about 6 x 2 cm in axial
+___ but the area of greatest hemorrhage is not necessarily imaged and
+may lie superior. No active extravasation is identified. There is a hypodense
+collection layering along the left iliac wing and gluteus medius musculature
+suggesting sequela of older hematoma including surrounding fat stranding.
+
+No fracture is identified.  An ossification in paraspinal musculature suggests
+myositis ossificans from older injury.  There are no suspicious bone lesions.
+
+IMPRESSION: 
+
+Acute hemorrhage along the right posterior flank musculature associated with
+right posterior chest wall musculature; the entirety of the hematoma is
+probably not imaged.  No definite active acute arterial extravasation seen.
+Probable old hematoma along the left posterior flank.
+",CT OF THE ABDOMEN AND PELVIS," CT images of the abdomen and pelvis were obtained with intravenous contrast. Sagittal and coronal reformations were also performed. The gallbladder, liver, pancreas, spleen, and adrenal glands appear within normal limits. There is no lymphadenopathy or ascites. Fat stranding is present in subcutaneous tissues along the right flank. An ossification in paraspinal musculature suggests myositis ossificans from older injury. There are no suspicious bone lesions."
+10000560-RR-24,10000560,,RR,24,2189-06-26 14:01:00,2189-06-26 18:22:00,"INDICATION:  ___ woman with lower abdominal pain, constant _____,
+evaluate for diverticulitis.
+
+COMPARISON:  None.
+
+TECHNIQUE:  Multiple MDCT axial images were obtained from the lung bases
+through the proximal thighs after administration of 130 cc of Optiray
+intravenously.  Enteric contrast was not administered.  Sagittal and coronal
+reformations were derived.
+
+FINDINGS:
+
+CT OF THE ABDOMEN WITH INTRAVENOUS CONTRAST:
+
+In the visualized thorax, the lung bases are clear.  There is no pulmonary
+nodule, pneumothorax, or pleural effusion.  The visualized heart is normal.
+There is no pericardial effusion.
+
+In the abdomen, the liver enhances homogeneously.  There is no intra- or
+extra-hepatic bile duct dilatation.  The spleen, adrenals, gallbladder, and
+pancreas appear normal.  The kidneys symmetrically take up and excrete
+contrast with no hydronephrosis.  There is a large complex oval but slightly
+lobulated 2.7 x 3.1 x 3.2 cm hypodense lesion (2:35, 300B:33), although not
+simple fluid density.  On several slices, enhancing internal septation is
+demonstrated ( for examples 2:36, 2:35).  The amorphous appearance of some
+high- density material raises the possibility of hemorrhage within this
+complex cystic structure although there is no layering.  Other small bilateral
+hypodensities are seen (for example 2:33, 2:29), too small to characterize.
+
+Abdominal loops of bowel appear normal.  There is no abdominal free air, free
+fluid, or pathologic lymphadenopathy.  The abdominal vasculature appears
+normal with minor aortic atherosclerotic changes.  The major branches of the
+celiac trunk and SMA are widely patient at their origin.
+
+CT PELVIS WITH INTRAVENOUS CONTRAST:
+
+The bladder and distal ureters are normal.  There is a small 7-mm hyperdense
+focus in the fundus of the uterus (2:70, 301B:35) that may represent a small
+calcified fibroid.  The right adnexa (2:70) and left (2:75) are unremarkable
+with no demonstration of large cysts.  There is no significant free fluid.
+There is sigmoidal diverticulosis without evidence of diverticulitis.  There
+is no pelvic free air or pathologic lymphadenopathy.
+
+MUSCULOSKELETAL:
+
+There is no suspicious osteolytic or osteoblastic lesion.
+
+IMPRESSION:
+
+1.  Right complex septated renal cystic lesion, for which the differential
+includes neoplasm; outpatient MR is recommended.  Hyperdense material within
+this cyst may represent  hemorrhagic foci.
+
+2.  No evidence for diverticulitis or nephrolithiasis (although exam limited
+by contrast).  
+
+",N/A,"Woman with lower abdominal pain, constant pain, evaluate for diverticulitis. Multiple MDCT axial images were obtained from the lung bases through the proximal thighs after administration of 130 cc of Optiray intravenously. Enteric contrast was not administered. Sagittal and coronal reformations were derived. The spleen, adrenals, gallbladder, and pancreas appear normal. The kidneys symmetrically take up and excrete contrast with no hydronephrosis. There is a large complex oval but slightly lobulated 2.7 x 3.1 x3.2 cm hypodense lesion."
+10000560-RR-25,10000560,,RR,25,2189-07-16 07:03:00,2189-07-16 20:21:00,"MRI OF THE ABDOMEN FROM ___
+
+HISTORY:  Patient with history of severe abdominal pain.  Also complicated
+right renal lesion.
+
+COMMENT:  Multiplanar T1- and T2-weighted images of the abdomen were acquired
+on a 1.5 Tesla magnet including dynamic 3D imaging prior to, during and after
+IV administration of 15 mL of Magnevist.  Multiplanar 2D  and 3D reformations
+and subtraction images were generated on an independent workstation.
+Comparison is made with CT scan from ___.
+
+FINDINGS:  There is a lesion in the mid right kidney.  This is within the
+parenchyma of the kidney and comes in close proximity to the collecting
+system.  The lesion is heterogeneous on T2-weighted images with predominantly
+increased signal intensity and some areas of decreased signal intensity.  On
+the T1-weighted images, there is a small focus centrally which is of increased
+signal intensity.  On the post-contrast images, there is vague and low level
+internal enhancement.  The lesion is suspicious for a cystic renal cell
+carcinoma.
+
+There is a 5-mm focus in the lower pole of the left kidney, and a 4-mm focus
+in the lower pole of the right kidney.  These probably represent tiny cysts.
+There is no evidence of hydronephrosis.  The bilateral renal veins are patent.
+The patient appears to have two renal arteries bilaterally.  There is no bulky
+retroperitoneal adenopathy.
+
+The left adrenal is minimally thickened and nodular with some signal dropout
+on the out-of-phase images.  Findings are probably due to hyperplasia. The
+right adrenal is unremarkable. There is an accessory hepatic vein in the
+posterior segment of the right lobe of the liver.  
+
+The remainder of the visualized viscera appear unremarkable. 
+
+Multiplanar 2D and 3D reformations delineated the dynamic series with multiple
+perspectives. 
+
+IMPRESSION:
+
+Cystic mass in the mid right kidney with internal enhancement.  This is
+suspicious for cystic renal cell carcinoma.
+
+Critical finding notification was posted in InfoRadiology.
+
+
+",N/A,"Patient with history of severe abdominal pain. Also complicated right renal lesion. Multiplanar T1- and T2-weighted images of the abdomen were acquired on a 1.5 Tesla magnet including dynamic 3D imaging prior to, during and after IV administration of 15 mL of Magnevist. Cystic mass in the mid right kidney with internal enhancement. This is suspicious for cystic renal cell carcinoma. Left adrenal is minimally thickened and nodular with some signal dropout on out-of-phase images."
+10000764-RR-15,10000764,27897940.0,RR,15,2132-10-15 09:02:00,2132-10-15 11:48:00,"EXAMINATION:  CHEST (PA AND LAT)
+
+INDICATION:  ___ with hypoxia  // ?pna, aspiration.
+
+COMPARISON:  None
+
+FINDINGS: 
+
+PA and lateral views of the chest provided.   The lungs are adequately
+aerated.
+
+There is a focal consolidation at the left lung base adjacent to the lateral
+hemidiaphragm. There is mild vascular engorgement. There is bilateral apical
+pleural thickening.
+
+The cardiomediastinal silhouette is remarkable for aortic arch calcifications.
+The heart is top normal in size.
+
+IMPRESSION: 
+
+Focal consolidation at the left lung base, possibly representing aspiration or
+pneumonia.
+
+Central vascular engorgement.
+",CHEST (PA AND LAT),"EXAMINATION: CHEST (PA AND LAT) INDICATION: _ _ _ with hypoxia / /? pna, aspiration. Focal consolidation at the left lung base, possibly representing aspiration or pneumonia. Central vascular engorgement. Bilateral apical pleural thickening. The cardiomediastinal silhouette is remarkable for aortic arch calcifications. The heart is top normal in size. The lungs are adequately aerated. The lung is well aerated and the heart is well-developed."
