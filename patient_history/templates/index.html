@@ -77,7 +77,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-3"><h3>Patient Number:</h3></div>
-                <div class="col-9"><h3>{{ subject_id }}</h3></div>
+                <div class="col-9"><h3>{{ subject_id if subject_id and subject_name != 'Non-existent Patient' else 'Non-existent Patient ID' }}</h3></div>
             </div>
         </div>
 
@@ -123,7 +123,7 @@
                     <div id="list-1" class="list-group">
                         {% for discharge in discharge_arr %}
                             <a class="list-group-item list-group-item-action" href="#list-item-{{ loop.index }}">
-                                Date {{ loop.index }}: {{ discharge.storetime.strftime('%Y-%m-%d') if discharge.storetime else 'N/A' }}
+                                 {{ discharge.storetime.strftime('%Y-%m-%d') if discharge.storetime else 'N/A' }} : {{discharge.complaint}}
                             </a>
                         {% else %}
                             <div>No discharge records found.</div>
@@ -152,9 +152,9 @@
                         <div class="tab-pane fade show active" id="history" role="tabpanel" aria-labelledby="discharge-tab">
                             <div data-bs-spy="scroll" data-bs-target="#list-1" data-bs-smooth-scroll="true" class="scrollspy-example" tabindex="0">
                                 {% for discharge in discharge_arr %}
-                                    <h4 id="list-item-{{ loop.index }}">Date {{ loop.index }}: {{ discharge.storetime.strftime('%Y-%m-%d') if discharge.storetime else 'N/A' }}</h4>
+                                    <h4 id="list-item-{{ loop.index }}"> {{ discharge.storetime.strftime('%Y-%m-%d') if discharge.storetime else 'N/A' }} : {{discharge.complaint}}</h4>
                                     <p>
-                                        {{ discharge.text }}
+                                        {{ discharge.history_present_illness }}
                                     </p>
                                 {% else %}
                                     <p>No discharge data available.</p>
@@ -164,12 +164,26 @@
                         <!-- Note 2 pane -->
                         <div class="tab-pane fade" id="note2" role="tabpanel" aria-labelledby="note2-tab">
                             <div data-bs-spy="scroll" data-bs-target="#list-1" data-bs-smooth-scroll="true" class="scrollspy-example" tabindex="1">
-                                <p> some text</p>
+                                {% for discharge in discharge_arr %}
+                                    <h4 id="list-item-{{ loop.index }}"> {{ discharge.storetime.strftime('%Y-%m-%d') if discharge.storetime else 'N/A' }} : {{discharge.complaint}}</h4>
+                                    <p>
+                                        {{ discharge.family_history }}
+                                    </p>
+                                {% else %}
+                                    <p>No discharge data available.</p>
+                                {% endfor %}
                             </div>
                         </div>
                         <div class="tab-pane fade" id="note3" role="tabpanel" aria-labelledby="note3-tab">
                             <div data-bs-spy="scroll" data-bs-target="#list-1" data-bs-smooth-scroll="true" class="scrollspy-example" tabindex="2">
-                                <p> some text</p>
+                                {% for discharge in discharge_arr %}
+                                    <h4 id="list-item-{{ loop.index }}"> {{ discharge.storetime.strftime('%Y-%m-%d') if discharge.storetime else 'N/A' }} : {{discharge.complaint}}</h4>
+                                    <p>
+                                        {{ discharge.past_history }}
+                                    </p>
+                                {% else %}
+                                    <p>No discharge data available.</p>
+                                {% endfor %}
                             </div>
                         </div>
                     </div>
@@ -192,7 +206,7 @@
                     <div id="list-2" class="list-group">
                         {% for radiology in radiology_arr %}
                             <a class="list-group-item list-group-item-action" href="#list-item-{{ loop.index }}">
-                                Date {{ loop.index }}: {{ radiology.storetime.strftime('%Y-%m-%d') if radiology.storetime else 'N/A' }} - {{ radiology.examination }}
+                                {{ radiology.storetime.strftime('%Y-%m-%d') if radiology.storetime else 'N/A' }} : {{ radiology.examination }}
                             </a>
                         {% else %}
                             <div>No radiology records found.</div>
@@ -203,7 +217,7 @@
                 <div class="col-8 text-bg-success">
                     <div data-bs-spy="scroll" data-bs-target="#list-2" data-bs-smooth-scroll="true" class="scrollspy-example" tabindex="0" style="max-height: 500px; overflow-y: auto;">
                         {% for radiology in radiology_arr %}
-                            <h4 id="list-item-{{ loop.index }}">Date {{ loop.index }}: {{ radiology.storetime.strftime('%Y-%m-%d') if radiology.storetime else 'N/A' }}</h4>
+                            <h4 id="list-item-{{ loop.index }}">{{ radiology.storetime.strftime('%Y-%m-%d') if radiology.storetime else 'N/A' }} : {{ radiology.examination }}</h4>
                             <p>
                                 {{ radiology.text }}
                             </p>
