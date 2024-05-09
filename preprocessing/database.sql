@@ -1,5 +1,4 @@
 -- Discharge data
--- TODO: Add the new columns (summarised)
 CREATE TABLE public.discharge_data (
     note_id character varying(15) NOT NULL,
     subject_id character varying(8) NOT NULL,
@@ -13,6 +12,9 @@ CREATE TABLE public.discharge_data (
     dob date,
     complaint text NOT NULL,
     patient_sex character varying(6) NOT NULL,
+    history_present_illness text NOT NULL,
+    family_history text NOT NULL,
+    past_history text NOT NULL,
     PRIMARY KEY (note_id)
 );
 
