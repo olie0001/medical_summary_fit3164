@@ -2,6 +2,14 @@ body {
     background-color: #dbdbdb;
 }
 
+.h1 {
+    color:  white;
+    background-color: rgb(32, 147, 170); 
+    border-radius: 20px;
+    border: none;  /* Explicitly remove borders */
+    box-shadow: none;  /* Remove any shadows */
+}
+
 .row, .h3{
     padding-top: 10px;
     padding-bottom: 10px;
@@ -30,11 +38,11 @@ body {
     background-color: white;
     padding: 0 12px; /* Padding around icon */
     vertical-align: middle; /* Aligns button properly with input */
-    border: 2px solid green;
+    border: 2px solid rgb(32, 147, 170);
 }
 
 .btn-primary:hover {
-    background-color: green; /* Change background to green */
+    background-color: rgb(32, 147, 170); /* Change background to blue */
     color: white; /* Change text/icon color to white for contrast */
 }
 
@@ -45,11 +53,11 @@ body {
 .btn-primary:not(:disabled):not(.disabled):active,
     .btn-primary:not(:disabled):not(.disabled).active,
     .show > .btn-primary.dropdown-toggle {
-        background-color: darkgreen; /* Darker shade for active state */
+        background-color: rgb(32, 147, 170); /* Darker shade for active state */
         color: white;
 }
 .btn-primary:focus {
-    background-color: green;
+    background-color: rgb(32, 147, 170);
     color: white;
     box-shadow: 0 0 0 0.2rem rgba(0, 128, 0, 0.5); /* Adjust the box-shadow color to match */
 }
@@ -69,7 +77,7 @@ body {
 }
 
 .col-4{
-    padding: 10px;
+    padding: 10px; 
 }
 
 /* container that containes the whole discharge group item*/
@@ -79,7 +87,7 @@ body {
 
 /* date list item */
 .list-group-item.active {
-    background-color: #28a745; /* Green */
+    background-color: rgb(32, 147, 170); /* Blue */ 
     color: white; /* Text color */
     border-color: white;
 }
@@ -98,6 +106,8 @@ body {
 .col-8{
     padding: 10px;
     border-radius: 20px;
+    background-color:  rgb(32, 147, 170);
+    color: white;
 }
 
 
