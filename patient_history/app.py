@@ -92,6 +92,5 @@ def search():
                            subject_id=subject_id, subject_name=subject_name,
                            subject_dob=subject_dob, patient_sex=patient_sex)
 
-
 if __name__ == '__main__':
     app.run(debug=True)
