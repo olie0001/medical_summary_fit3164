@@ -1,13 +1,13 @@
 from flask import Flask, render_template, request
 from flask_sqlalchemy import SQLAlchemy
-# from transformers import AutoTokenizer, BertLMHeadModel
+from transformers import AutoTokenizer, BertLMHeadModel
 import re
-# from faker import Faker
+from faker import Faker
 import random
 from datetime import datetime, timedelta
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://alex:ds12@localhost/patient_note'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:ds12@localhost/patient_note'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 
@@ -91,7 +91,6 @@ def search():
     return render_template('index.html', discharge_arr=discharge_arr, radiology_arr=radiology_arr,
                            subject_id=subject_id, subject_name=subject_name,
                            subject_dob=subject_dob, patient_sex=patient_sex)
-
 
 if __name__ == '__main__':
     app.run(debug=True)
