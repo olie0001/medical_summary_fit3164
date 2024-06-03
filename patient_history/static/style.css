@@ -43,7 +43,6 @@ body {
 
 .btn-primary:hover {
     background-color: rgb(32, 147, 170); /* Change background to blue */
-
     color: white; /* Change text/icon color to white for contrast */
 }
 
@@ -145,4 +144,3 @@ body {
 /* Styling for non-active nav-link color */
 .nav-link:not(.active) {
     color: #dbdbdb; /* Change color for non-active nav-link */
-}
