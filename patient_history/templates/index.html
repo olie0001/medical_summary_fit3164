@@ -114,7 +114,7 @@
         <!--Patient History-->
         <div class="container">
             <div class="my-4">
-                <h1 class="text-success">Patient History</h1>
+                <h1 style = "color: rgb(32, 147, 170);">Patient History</h1>
             </div>
             <div class="row">
                 <h3>Discharge Date</h3>
@@ -131,7 +131,7 @@
                     </div>
                 </div>                
                 <!--Medical Note-->
-                <div class="col-8 text-bg-success" style="border-radius: 20px;">
+                <div class="col-8" style="border-radius: 20px;">
                     <!-- Nav tabs -->
                     <ul class="nav nav-tabs" id="myTab" role="tablist">
                         <li class="nav-item" role="presentation">
@@ -197,7 +197,7 @@
         <!--Radiology History-->
         <div class="container">
             <div class="my-4">
-                <h1 class="text-success">Radiology History</h1>
+                <h1 style = "color: rgb(32, 147, 170);">Radiology History</h1>
             </div>
             <div class="row">
                 <h3>Radiology Date</h3>
@@ -214,7 +214,7 @@
                     </div>
                 </div>                
                 <!--Radiology Note-->
-                <div class="col-8 text-bg-success">
+                <div class="col-8">
                     <div data-bs-spy="scroll" data-bs-target="#list-2" data-bs-smooth-scroll="true" class="scrollspy-example" tabindex="0" style="max-height: 500px; overflow-y: auto;">
                         {% for radiology in radiology_arr %}
                             <h4 id="list-item-{{ loop.index }}">{{ radiology.storetime.strftime('%Y-%m-%d') if radiology.storetime else 'N/A' }} : {{ radiology.examination }}</h4>
