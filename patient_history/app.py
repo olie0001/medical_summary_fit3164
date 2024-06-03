@@ -7,7 +7,7 @@ import random
 from datetime import datetime, timedelta
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:ds12@localhost:5433/patient_note'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:ds12@localhost/patient_note'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 
@@ -91,7 +91,6 @@ def search():
     return render_template('index.html', discharge_arr=discharge_arr, radiology_arr=radiology_arr,
                            subject_id=subject_id, subject_name=subject_name,
                            subject_dob=subject_dob, patient_sex=patient_sex)
-
 
 if __name__ == '__main__':
     app.run(debug=True)
